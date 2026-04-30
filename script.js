@@ -5,6 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgMusic = document.getElementById('bg-music');
     let musicStarted = false;
 
+    // --- LOVE COUNTER LOGIC ---
+    // Change this date to when you first met or started dating
+    const startDate = new Date('2023-01-01T00:00:00'); 
+
+    function updateCounter() {
+        const now = new Date();
+        const diff = now - startDate;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById('days').innerText = days.toString().padStart(2, '0');
+        document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // --- MUSIC LOGIC ---
     function startMusic() {
         if (!musicStarted) {
             bgMusic.play().catch(e => console.log("Autoplay blocked"));
@@ -23,8 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Start music on first interaction
     document.body.addEventListener('click', startMusic, { once: true });
+
+    // --- SURPRISE ANIMATION ---
+    function createLoveText() {
+        const text = document.createElement('div');
+        text.classList.add('love-text');
+        text.innerHTML = 'I Love You ❤️';
+        const x = Math.random() * 80 + 10;
+        const y = Math.random() * 80 + 10;
+        text.style.left = x + 'vw';
+        text.style.top = y + 'vh';
+        const fontSize = Math.random() * 1.5 + 1 + 'rem';
+        text.style.fontSize = fontSize;
+        text.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
+        document.body.appendChild(text);
+        setTimeout(() => text.remove(), 2000);
+    }
 
     function createHeart() {
         const heart = document.createElement('div');
@@ -40,49 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => heart.remove(), parseFloat(duration) * 1000);
     }
 
-    function createLoveText() {
-        const text = document.createElement('div');
-        text.classList.add('love-text');
-        text.innerHTML = 'I Love You ❤️';
-        
-        // Random positions
-        const x = Math.random() * 80 + 10; // Avoid edges
-        const y = Math.random() * 80 + 10;
-        
-        text.style.left = x + 'vw';
-        text.style.top = y + 'vh';
-        
-        // Random size and rotation
-        const fontSize = Math.random() * 1.5 + 1 + 'rem';
-        text.style.fontSize = fontSize;
-        text.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
-        
-        document.body.appendChild(text);
-
-        // Remove after a while
-        setTimeout(() => text.remove(), 2000);
-    }
-
     surpriseBtn.addEventListener('click', () => {
-        // Change button text
         surpriseBtn.innerHTML = 'Infinity Love! <i class="fa-solid fa-heart"></i>';
-        
-        // Start filling the screen
         let count = 0;
-        const max = 150; // Total "I Love You" messages
-        
+        const max = 150;
         const interval = setInterval(() => {
             createLoveText();
             createHeart();
             count++;
-            
-            if (count >= max) {
-                clearInterval(interval);
-            }
-        }, 50); // Fast spawn
+            if (count >= max) clearInterval(interval);
+        }, 50);
     });
 
-    // Subtitle reveal
+    // --- SCROLL REVEAL ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -91,10 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.glass-card').forEach(el => {
+    document.querySelectorAll('.glass-card, .timeline-item, .premium-quote').forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s ease-out';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'all 1s cubic-bezier(0.22, 1, 0.36, 1)';
         observer.observe(el);
     });
 
