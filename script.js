@@ -1,6 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     const surpriseBtn = document.getElementById('surprise-btn');
     const heartContainer = document.getElementById('heart-container');
+    const musicBtn = document.getElementById('music-btn');
+    const bgMusic = document.getElementById('bg-music');
+    let musicStarted = false;
+
+    function startMusic() {
+        if (!musicStarted) {
+            bgMusic.play().catch(e => console.log("Autoplay blocked"));
+            musicBtn.classList.add('playing');
+            musicStarted = true;
+        }
+    }
+
+    musicBtn.addEventListener('click', () => {
+        if (bgMusic.paused) {
+            bgMusic.play();
+            musicBtn.classList.add('playing');
+        } else {
+            bgMusic.pause();
+            musicBtn.classList.remove('playing');
+        }
+    });
+
+    // Start music on first interaction
+    document.body.addEventListener('click', startMusic, { once: true });
 
     function createHeart() {
         const heart = document.createElement('div');
