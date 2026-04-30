@@ -113,103 +113,40 @@ body {
     color: white;
 }
 
-/* Memories Section */
-.memories {
-    padding: 60px 20px;
-}
-
-.section-heading {
-    text-align: center;
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.8rem;
-    margin-bottom: 40px;
-    color: var(--secondary-pink);
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.memory-card {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    height: 300px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease;
-}
-
-.memory-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.memory-card .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-/* Love Notes */
-.love-notes {
-    padding: 40px 20px;
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.notes-container {
+/* Surprise Section */
+.surprise-container {
+    padding: 80px 20px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
 }
 
-.note-card {
-    background: var(--glass);
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    transition: transform 0.3s ease;
+.main-btn {
+    padding: 20px 45px;
+    font-size: 1.3rem;
+    margin-top: 30px;
+    background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+    animation: pulse 1.5s infinite;
 }
 
-.note-card i {
-    font-size: 2rem;
-    color: var(--primary-pink);
-    margin-bottom: 15px;
-}
-
-.note-card h3 {
-    margin-bottom: 10px;
-}
-
-/* Interact */
-.interact {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.btn-primary {
-    background: var(--primary-pink);
+/* Love Text Animation */
+.love-text {
+    position: fixed;
     color: white;
-    border: none;
-    padding: 15px 35px;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 20px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-    transition: all 0.3s ease;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1000;
+    white-space: nowrap;
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.8);
+    animation: appear 1s ease-out forwards;
 }
 
-.btn-primary:active {
-    transform: scale(0.95);
+@keyframes appear {
+    0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
 }
 
 /* Final Letter */
@@ -234,23 +171,12 @@ body {
 
 /* Animations */
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 77, 109, 0.6); }
 }
 
 @keyframes draw {
     to { stroke-dashoffset: 400; }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
-}
-
-@keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
 }
 
 @keyframes float {
@@ -267,19 +193,8 @@ body {
     animation: float linear forwards;
 }
 
-/* Desktop adjustments (still mobile first but usable on desktop) */
+/* Desktop adjustments */
 @media (min-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .notes-container {
-        flex-direction: row;
-        justify-content: center;
-    }
-    .note-card {
-        flex: 1;
-        max-width: 300px;
-    }
     .glass-card {
         max-width: 600px;
     }
