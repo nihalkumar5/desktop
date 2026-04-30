@@ -7,6 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicBtn = document.getElementById('music-btn');
     const heartContainer = document.getElementById('heart-container');
 
+    let yesScale = 1;
+    const noMessages = [
+        "No 😜",
+        "Are you sure? 🤨",
+        "Really? 🥺",
+        "Think again! 🧐",
+        "Still No? 😢",
+        "You're being mean! 😭",
+        "Just say Yes! 🥰",
+        "I'm waiting... 🕰️",
+        "Click the big button! 👇"
+    ];
+    let msgIndex = 0;
+
     // Music Logic
     let musicStarted = false;
     function startMusic() {
@@ -22,21 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.body.addEventListener('click', startMusic, { once: true });
 
-    // --- TEASE LOGIC: No Button Runaway ---
-    noBtn.addEventListener('mouseover', moveButton);
-    noBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        moveButton();
-    });
-
+    // --- TEASE LOGIC ---
     function moveButton() {
+        // Grow the Yes button
+        yesScale += 0.25;
+        yesBtn.style.transform = `scale(${yesScale})`;
+        
+        // Move the No button
         const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
         const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
         
         noBtn.style.position = 'fixed';
         noBtn.style.left = x + 'px';
         noBtn.style.top = y + 'px';
+        
+        // Change No button text
+        msgIndex = (msgIndex + 1) % noMessages.length;
+        noBtn.innerText = noMessages[msgIndex];
     }
+
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('click', moveButton);
+    noBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        moveButton();
+    });
 
     // --- SURPRISE LOGIC ---
     yesBtn.addEventListener('click', () => {
@@ -46,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeBtn.addEventListener('click', () => {
         modal.classList.remove('show');
+        // Reset scale when closed if desired, or keep it big
     });
 
     function createHeart() {
@@ -70,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startSurprise() {
-        // Continuous burst
         const interval = setInterval(() => {
             if (!modal.classList.contains('show')) {
                 clearInterval(interval);

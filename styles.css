@@ -107,11 +107,19 @@ body {
     min-height: 80px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+    color: white;
+    border: none;
     padding: 14px 28px;
     border-radius: 50px;
     font-size: 1rem;
     white-space: nowrap;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+    z-index: 2;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .btn-secondary {
