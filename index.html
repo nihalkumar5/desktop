@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To My Infinity & Beyond ❤️</title>
+    <title>A Special Surprise ❤️</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,126 +22,37 @@
         </audio>
     </div>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
-        <section class="hero" id="home">
+        <section class="hero">
             <div class="glass-card fade-in">
-                <h1 class="romantic-text">To My Everything</h1>
+                <h1 class="romantic-text">Hey Beautiful...</h1>
+                <p class="subtitle">I have a very important question for you.</p>
+                
+                <div class="tease-container">
+                    <h2 class="question">Do you want to see how much I love you?</h2>
+                    <div class="btn-group">
+                        <button id="yes-btn" class="btn-primary">Yes! ❤️</button>
+                        <button id="no-btn" class="btn-secondary">No 😜</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Surprise Modal -->
+        <div id="surprise-modal" class="modal">
+            <div class="modal-content glass-card">
+                <h2 class="romantic-text">I Knew You'd Say Yes!</h2>
                 <div class="infinity-container">
                     <svg class="infinity-svg" viewBox="0 0 100 100">
                         <path d="M20,50 C20,30 40,30 50,50 C60,70 80,70 80,50 C80,30 60,30 50,50 C40,70 20,70 20,50" fill="none" stroke="currentColor" stroke-width="2" />
                     </svg>
                 </div>
-                <h2 class="love-title">I Love You <span class="accent-text">Infinity</span></h2>
-                <p class="subtitle">Every second, every minute, forever.</p>
+                <h1 class="love-title">I Love You <span class="accent-text">Infinity</span></h1>
+                <p class="letter-text">"Every second with you is a gift I'll cherish forever."</p>
+                <button id="close-modal" class="btn-primary">Forever & Always</button>
             </div>
-            <div class="scroll-indicator">
-                <span>Discover Our Story</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </div>
-        </section>
-
-        <!-- Section 1: Love Counter -->
-        <section class="counter-section">
-            <div class="glass-card">
-                <h2 class="section-heading">Every Moment Matters</h2>
-                <div class="counter-grid">
-                    <div class="counter-item">
-                        <span id="days">00</span>
-                        <p>Days</p>
-                    </div>
-                    <div class="counter-item">
-                        <span id="hours">00</span>
-                        <p>Hours</p>
-                    </div>
-                    <div class="counter-item">
-                        <span id="minutes">00</span>
-                        <p>Minutes</p>
-                    </div>
-                    <div class="counter-item">
-                        <span id="seconds">00</span>
-                        <p>Seconds</p>
-                    </div>
-                </div>
-                <p class="counter-subtext">...since my world became infinitely better with you.</p>
-            </div>
-        </section>
-
-        <!-- Section 2: Our Journey (Timeline) -->
-        <section class="timeline-section">
-            <h2 class="section-heading">Our Beautiful Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content glass-card">
-                        <h3>The First Spark</h3>
-                        <p>The moment I saw you, I knew my life was about to change forever.</p>
-                        <span class="date">Chapter 1</span>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content glass-card">
-                        <h3>Becoming 'Us'</h3>
-                        <p>From deep conversations to endless laughter, we became inseparable.</p>
-                        <span class="date">Chapter 2</span>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content glass-card">
-                        <h3>Infinite Love</h3>
-                        <p>Today and every day, my love for you grows beyond the stars.</p>
-                        <span class="date">Present</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Cinematic Quote -->
-        <section class="quote-section parallax">
-            <div class="quote-overlay">
-                <blockquote class="premium-quote">
-                    "In your eyes, I found my home. In your heart, I found my peace. In your soul, I found my infinity."
-                </blockquote>
-            </div>
-        </section>
-
-        <!-- Section 4: Our Promises -->
-        <section class="promises-section">
-            <h2 class="section-heading">My Promises To You</h2>
-            <div class="promises-grid">
-                <div class="promise-card glass-card">
-                    <i class="fa-solid fa-shield-heart"></i>
-                    <h3>To Protect</h3>
-                    <p>Your happiness will always be my first priority.</p>
-                </div>
-                <div class="promise-card glass-card">
-                    <i class="fa-solid fa-hand-holding-heart"></i>
-                    <h3>To Support</h3>
-                    <p>I'll be your biggest fan in everything you do.</p>
-                </div>
-                <div class="promise-card glass-card">
-                    <i class="fa-solid fa-infinity"></i>
-                    <h3>To Love</h3>
-                    <p>With all I am, for all you are, for all our lives.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Surprise (The Fill Screen Button) -->
-        <section class="surprise-section">
-            <div class="glass-card">
-                <h2 class="section-heading">A Small Token of My Love</h2>
-                <p>Because words aren't enough to show you how much you mean to me.</p>
-                <button id="surprise-btn" class="btn-primary main-btn">Tap for a Surprise <i class="fa-solid fa-heart"></i></button>
-            </div>
-        </section>
-
-        <!-- Final Letter -->
-        <footer class="final-letter">
-            <p class="letter-text">
-                "You are my today and all of my tomorrows."
-            </p>
-            <div class="signature">Forever Yours, ❤️</div>
-        </footer>
+        </div>
     </main>
 
     <script src="script.js"></script>
